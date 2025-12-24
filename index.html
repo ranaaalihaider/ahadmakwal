@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 A Special Message Awaits...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .section {
+            padding: 40px 30px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .intro-section {
+            background: linear-gradient(135deg, #ff6b9d 0%, #feca57 100%);
+            color: white;
+        }
+
+        .intro-section h1 {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .intro-section p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .from-tag {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .question-section {
+            background: white;
+        }
+
+        .question {
+            font-size: 1.8em;
+            color: #764ba2;
+            margin: 20px 0;
+            font-weight: bold;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        .question-count {
+            font-size: 1em;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            margin: 30px 0;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            margin: 15px 0;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .option-btn:nth-child(1) {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .option-btn:nth-child(2) {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+        }
+
+        .option-btn:nth-child(3) {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: white;
+        }
+
+        .option-btn:nth-child(4) {
+            background: linear-gradient(135deg, #43e97b, #38f9d7);
+            color: white;
+        }
+
+        .option-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .option-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .reveal-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 50px 30px;
+        }
+
+        .big-reveal {
+            font-size: 3em;
+            color: #764ba2;
+            margin: 20px 0;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+            animation: tada 1s ease-in-out;
+        }
+
+        @keyframes tada {
+            0% { transform: scale(1) rotate(0deg); }
+            10%, 20% { transform: scale(0.9) rotate(-3deg); }
+            30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+            40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .name-reveal {
+            font-size: 3.5em;
+            color: #f5576c;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 3px 3px 0px #feca57;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .message-card {
+            background: white;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .message-card p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        .signature {
+            text-align: right;
+            font-size: 1.4em;
+            color: #764ba2;
+            font-style: italic;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        .signature-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+            border-radius: 15px;
+            color: white;
+            margin-top: 30px;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            display: inline-block;
+        }
+
+        .spin {
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 1.5s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .fireworks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: explode 1.5s ease-out infinite;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty));
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 30px 20px;
+            }
+
+            .intro-section h1 {
+                font-size: 1.8em;
+            }
+
+            .intro-section p {
+                font-size: 1.1em;
+            }
+
+            .question {
+                font-size: 1.4em;
+            }
+
+            .option-btn {
+                padding: 15px;
+                font-size: 1.1em;
+            }
+
+            .big-reveal {
+                font-size: 2.2em;
+            }
+
+            .name-reveal {
+                font-size: 2.5em;
+            }
+
+            .message-card p {
+                font-size: 1.1em;
+            }
+
+            .signature {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .intro-section h1 {
+                font-size: 1.5em;
+            }
+
+            .question {
+                font-size: 1.2em;
+            }
+
+            .big-reveal {
+                font-size: 1.8em;
+            }
+
+            .name-reveal {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Intro Section -->
+        <div class="section intro-section" id="intro">
+            <h1>🎯 Hey There!</h1>
+            <p>I created something special for someone's birthday today...</p>
+            <div class="from-tag">📝 Made by: Ahad Makwal</div>
+            <p style="margin-top: 20px; font-size: 1.4em;">Ready to find out who? 🤔</p>
+        </div>
+
+        <!-- Question 1 -->
+        <div class="section question-section hidden" id="question1">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 33%"></div>
+            </div>
+            <div class="question-count">Question 1 of 3</div>
+            <div class="question">
+                Who's got the best sense of humor? <span class="sparkle">😄</span>
+            </div>
+            <div class="options">
+                <button class="option-btn" onclick="wrongAnswer(this)">
+                    <span class="emoji">🤡</span> A comedian
+                </button>
+                <button class="option-btn" onclick="wrongAnswer(this)">
+                    <span class="emoji">😂</span> Your favorite YouTuber
+                </button>
+                <button class="option-btn" onclick="nextQuestion(1)">
+                    <span class="emoji">🌟</span> Someone you know very well
+                </button>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="section question-section hidden" id="question2">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 66%"></div>
+            </div>
+            <div class="question-count">Question 2 of 3</div>
+            <div class="question">
+                Who deserves all the happiness in the world? <span class="sparkle">💖</span>
+            </div>
+            <div class="options">
+                <button class="option-btn" onclick="wrongAnswer(this)">
+                    <span class="emoji">🦸</span> Superheroes
+                </button>
+                <button class="option-btn" onclick="nextQuestion(2)">
+                    <span class="emoji">✨</span> Someone incredibly special
+                </button>
+                <button class="option-btn" onclick="wrongAnswer(this)">
+                    <span class="emoji">🎬</span> Movie stars
+                </button>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="section question-section hidden" id="question3">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+            <div class="question-count">Question 3 of 3</div>
+            <div class="question">
+                Who's celebrating their birthday TODAY? <span class="spin">🎂</span>
+            </div>
+            <div class="options">
+                <button class="option-btn" onclick="wrongAnswer(this)">
+                    <span class="emoji">👑</span> The Queen of England
+                </button>
+                <button class="option-btn" onclick="wrongAnswer(this)">
+                    <span class="emoji">🎸</span> A famous rockstar
+                </button>
+                <button class="option-btn" onclick="wrongAnswer(this)">
+                    <span class="emoji">🧙</span> A wizard from Hogwarts
+                </button>
+                <button class="option-btn" onclick="correctAnswer()">
+                    <span class="emoji">🎉</span> The most amazing person ever!
+                </button>
+            </div>
+        </div>
+
+        <!-- Reveal Section -->
+        <div class="section reveal-section hidden" id="reveal">
+            <div class="fireworks" id="fireworks"></div>
+            <div class="big-reveal">🎊 YESSS! IT'S... 🎊</div>
+            <div class="name-reveal">RAMEESHA!</div>
+            
+            <div class="message-card">
+                <p><strong>🎂 HAPPY BIRTHDAY RAMEESHA! 🎂</strong></p>
+                <p>Okay, so I know you probably guessed it was you after question 1, but hey, I wanted to make it dramatic! 😄</p>
+                <p>Listen, another year older means another year of putting up with my jokes, my random 3 AM texts, and all our crazy adventures. You deserve an award for that alone! 🏆</p>
+                <p>But seriously, you're not just my best friend - you're the person who makes every boring day fun, every problem seem smaller, and every moment more memorable. </p>
+                <p>I hope this year brings you:</p>
+                <p>✨ More reasons to smile (and laugh at my jokes)<br>
+                🎯 All your dreams coming true<br>
+                🍰 Unlimited cake (with zero calories, obviously)<br>
+                💪 The strength to deal with me for another year<br>
+                🎉 Adventures that we'll remember forever</p>
+                <p>May your day be filled with love, laughter, cake, and everything that makes you happy!</p>
+                <p><strong>You're absolutely amazing, and I'm so lucky to have you as my best friend! 💖</strong></p>
+                
+                <div class="signature-box">
+                    <p style="font-size: 1.3em; margin: 0; color: white;">
+                        Your Best Friend Forever,<br>
+                        <strong style="font-size: 1.4em;">🎊 Ahad Makwal 🎊</strong>
+                    </p>
+                    <p style="font-size: 0.9em; margin-top: 10px; color: rgba(255,255,255,0.9);">
+                        P.S. - Yes, I made this whole website just for you! 😎
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show first question on load
+        setTimeout(() => {
+            document.getElementById('intro').style.display = 'none';
+            document.getElementById('question1').classList.remove('hidden');
+        }, 3000);
+
+        function wrongAnswer(btn) {
+            btn.style.background = 'linear-gradient(135deg, #ff6b6b, #ee5a6f)';
+            btn.innerHTML = '❌ Nice try! But nope!';
+            btn.style.transform = 'rotate(-2deg)';
+            setTimeout(() => {
+                btn.style.transform = 'rotate(0deg)';
+            }, 300);
+        }
+
+        function nextQuestion(current) {
+            document.getElementById('question' + current).style.display = 'none';
+            document.getElementById('question' + (current + 1)).classList.remove('hidden');
+        }
+
+        function correctAnswer() {
+            document.getElementById('question3').style.display = 'none';
+            document.getElementById('reveal').classList.remove('hidden');
+            createFireworks();
+        }
+
+        function createFireworks() {
+            const fireworksContainer = document.getElementById('fireworks');
+            const colors = ['#ff6b9d', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#00d2d3'];
+            
+            setInterval(() => {
+                for (let i = 0; i < 5; i++) {
+                    const firework = document.createElement('div');
+                    firework.className = 'firework';
+                    firework.style.left = Math.random() * 100 + '%';
+                    firework.style.top = Math.random() * 100 + '%';
+                    firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    firework.style.setProperty('--tx', (Math.random() - 0.5) * 300 + 'px');
+                    firework.style.setProperty('--ty', (Math.random() - 0.5) * 300 + 'px');
+                    firework.style.animationDelay = Math.random() * 0.3 + 's';
+                    fireworksContainer.appendChild(firework);
+                    
+                    setTimeout(() => {
+                        firework.remove();
+                    }, 1500);
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>
